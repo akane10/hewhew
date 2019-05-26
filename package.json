@@ -7,7 +7,7 @@
     "test": "jest --collectCoverage --testPathIgnorePatterns boilerplates/"
   },
   "bin": {
-    "bogen": "./index.js"
+    "node-bogen": "./index.js"
   },
   "author": "Yapie Rosyadie <yrosyadie@gmail.com>",
   "repository": {
