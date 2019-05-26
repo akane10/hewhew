@@ -1,4 +1,4 @@
-const { editFile, editJson } = require('../helpers');
+const { editJson } = require('../helpers');
 const { defaultDataTest } = require('./data');
 
 describe.each(defaultDataTest)(

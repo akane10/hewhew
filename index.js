@@ -20,7 +20,7 @@ async function doIt(questions, chosenProject) {
     createDirectoryContents(boilerplatePath, projectName);
 
     const editName = editJson({ name: projectName });
-    return editFile(`${currentProjectPath}/package.json`, editName);
+    editFile(`${currentProjectPath}/package.json`, editName);
   } catch (e) {
     const errCode = e.code;
 
