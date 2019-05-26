@@ -1,11 +1,11 @@
-# Bogen
+# Hewhew
 
-Bogen is boilerplate nodejs project generator. Current version is beta
+hewhew is boilerplate nodejs project generator. Current version is beta
 
 ## Installation
 
 ```
-npm i -g bogen
+npm i -g hewhew
 ```
 
 ## Usage
@@ -13,7 +13,7 @@ npm i -g bogen
 on terminal just type
 
 ```
-bogen
+hewhew
 ```
 
 ## Available Boilerplates
