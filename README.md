@@ -18,5 +18,5 @@ hewhew
 
 ## Available Boilerplates
 
-- [express-postgresql](https://github.com/akane10/bogen/tree/master/boilerplates/express-postgresql)
-- [express-mongodb](https://github.com/akane10/bogen/tree/master/boilerplates/express-mongodb)
+- [express-postgresql](https://github.com/akane10/hewhew/tree/master/boilerplates/express-postgresql)
+- [express-mongodb](https://github.com/akane10/hewhew/tree/master/boilerplates/express-mongodb)
