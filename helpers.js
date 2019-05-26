@@ -3,21 +3,19 @@ const fs = require('fs');
 const toJson = data => JSON.stringify(data, null, 2);
 
 const editJson = newData => data => {
-  const dataParsed = JSON.parse(data);
-  const newDataArr = Object.entries(newData);
-  const oldDataArr = Object.entries(dataParsed);
+  const dataObj = JSON.parse(data);
 
-  const obj = {};
-  oldDataArr.forEach(([oldKey, oldValue]) => {
-    newDataArr.forEach(([newKey, newValue]) => {
-      if (oldValue === newValue || newKey || newValue === null) {
-        obj[newKey] = newValue;
-      }
-      obj[oldKey] = oldValue;
-    });
-  });
+  const dataMerged = Object.entries({ ...dataObj, ...newData });
 
-  return toJson(obj);
+  const notUndefined = ([key, val]) => val !== undefined;
+  const toObj = (obj, item) => {
+    obj[item[0]] = item[1];
+    return obj;
+  };
+
+  const final = dataMerged.filter(notUndefined).reduce(toObj, {});
+
+  return toJson(final);
 };
 
 function editFile(path, fn) {

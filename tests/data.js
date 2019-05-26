@@ -16,11 +16,14 @@ const objData = {
   }
 };
 
-const result = objData => {
-  const data = toJson({ ...objData.newOne, mood: 'happy' });
-  delete data.age;
-  return data;
-};
+const result = toJson({
+  id: 2,
+  name: 'kiba',
+  mood: 'happy',
+  gender: 'female',
+  phone: null,
+  hobby: 0
+});
 
 const expected = result(objData);
 
