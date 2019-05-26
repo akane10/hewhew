@@ -43,6 +43,8 @@ function createDirectoryContents(boilerplatePath, newProjectPath) {
   const filesToCreate = fs.readdirSync(boilerplatePath);
 
   filesToCreate.forEach(file => {
+    if (file === 'README.md') return;
+
     const origFilePath = `${boilerplatePath}/${file}`;
 
     const stats = fs.statSync(origFilePath);
