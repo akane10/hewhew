@@ -1,4 +1,4 @@
-const Article = require('./ArticleModel');
+const Article = require('../ArticleModel');
 const { sendData } = require('../../../helpers/index');
 
 async function create(req, res, next) {

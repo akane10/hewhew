@@ -1,13 +1,12 @@
 const supertest = require('supertest');
-
 const app = require('../../app');
 const request = supertest(app);
-const { dbCon } = require('../../config/db');
+const { dbConn } = require('../../config/db');
 const { articleData, Bearer } = require('../data');
 
-describe.skip('test create article', () => {
-  beforeAll(dbCon.connectDB);
-  afterAll(dbCon.disconnectDB);
+describe('test create article', () => {
+  beforeAll(dbConn.connectDB);
+  afterAll(dbConn.disconnectDB);
 
   describe('test /articles/create', () => {
     test('create article', done => {

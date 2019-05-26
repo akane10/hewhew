@@ -1,3 +1,5 @@
+# EXPRESS MONGODB BOILERPLATE
+
 This boilerplate is integrated with eslint airbnb-base and prettier and using jest for testing library. there's also some basic functional programming stuff (in helpers) like curry, pipe, compose, composePromise, pipePromise, you might need ramda library for beyond. This is not MVC approach, in fact, is referenced to [nodebestpractices](https://github.com/i0natan/nodebestpractices)
 
 # File Structure
@@ -8,7 +10,7 @@ This boilerplate is integrated with eslint airbnb-base and prettier and using je
         |-- articles
             |-- controller
                 |-- create.js
-            |-- ArticleModel.js // model is defined in each component
+            |-- ArticleModel.js
             |-- index.js // article routes
     |-- helpers
         |-- tests // unit test for helpers
@@ -18,7 +20,6 @@ This boilerplate is integrated with eslint airbnb-base and prettier and using je
     |-- polices // middleware
         |-- verifyToken.js
     |-- index.js // all routes
-    |-- models.js // all models in each components are being centralized here
 |-- config
     |-- config.js
     |-- db.js
@@ -34,7 +35,6 @@ This boilerplate is integrated with eslint airbnb-base and prettier and using je
 |-- app.js
 |-- package.json
 |-- server.js
-|-- yarn.lock
 ```
 
 # Command
@@ -52,9 +52,7 @@ yarn start // run node server
   - cors
   - express
   - morgan
-  - pg
-  - pg-hstore
-  - sequelize
+  - mongoose
 - dev
   - dotenv
   - eslint
