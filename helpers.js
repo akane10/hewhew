@@ -20,7 +20,6 @@ function editFile(path, fn) {
   const data = fs.readFileSync(path, 'utf-8');
   const newData = fn(data);
   fs.writeFileSync(path, newData, 'utf-8');
-  // return newData;
 }
 
 module.exports = {
