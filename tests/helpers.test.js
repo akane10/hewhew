@@ -2,7 +2,7 @@ const { editJson } = require('../helpers');
 const { defaultDataTest } = require('./data');
 const fs = require('fs');
 
-describe.skip.each(defaultDataTest)(
+describe.each(defaultDataTest)(
   'test editJson',
   (valueTest, behavior, expected) => {
     test(`${behavior}`, () => {
@@ -21,7 +21,7 @@ const editFileData = [
   [path, 'should success', data]
 ];
 
-describe.each(editFileData)(
+describe.skip.each(editFileData)(
   'test editFile',
   (valueTest, behavior, expected) => {
     test(`${behavior}`, () => {
