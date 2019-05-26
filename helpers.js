@@ -4,7 +4,6 @@ const toJson = data => JSON.stringify(data, null, 2);
 
 const editJson = newData => data => {
   const dataObj = JSON.parse(data);
-
   const dataMerged = Object.entries({ ...dataObj, ...newData });
 
   const notUndefined = ([key, val]) => val !== undefined;
@@ -14,7 +13,6 @@ const editJson = newData => data => {
   };
 
   const final = dataMerged.filter(notUndefined).reduce(toObj, {});
-
   return toJson(final);
 };
 
@@ -22,6 +20,7 @@ function editFile(path, fn) {
   const data = fs.readFileSync(path, 'utf-8');
   const newData = fn(data);
   fs.writeFileSync(path, newData, 'utf-8');
+  // return newData;
 }
 
 module.exports = {

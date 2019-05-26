@@ -1,5 +1,6 @@
 const { toJson } = require('../helpers');
 
+// editJson data
 const objData = {
   oldOne: toJson({
     id: 1,
@@ -25,7 +26,7 @@ const result = toJson({
   hobby: 0
 });
 
-const expected = result(objData);
+const expected = result;
 
 const defaultDataTest = [
   // [value test, behavior, expected]
