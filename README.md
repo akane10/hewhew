@@ -1,6 +1,6 @@
 # Bogen
 
-Bogen is boilerplate nodejs project generator
+Bogen is boilerplate nodejs project generator. Current version is beta
 
 ## Installation
 
