@@ -1,6 +1,6 @@
 {
   "name": "bogen",
-  "version": "1.0.0",
+  "version": "1.0.0-beta.0",
   "description": "js boilerplate generator",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,7 @@
   "author": "Yapie Rosyadie <yrosyadie@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/akane10/js-projects-generator.git"
+    "url": "https://github.com/akane10/bogen.git"
   },
   "keywords": [
     "javascript",
