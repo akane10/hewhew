@@ -3,6 +3,7 @@
 const fs = require('fs');
 const generate = require('./src/generate');
 const add = require('./src/add');
+const deleteBoilerplate = require('./src/delete');
 
 const CHOICES = fs.readdirSync(`${__dirname}/boilerplates`);
 const QUESTIONS = [
@@ -30,6 +31,8 @@ const QUESTIONS = [
   if (arg === 'generate') return generate(QUESTIONS);
 
   if (arg === 'add') return add(QUESTIONS);
+
+  if (arg === 'delete') return deleteBoilerplate(QUESTIONS);
 
   console.log('no command found');
   process.exit(1);

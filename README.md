@@ -16,6 +16,8 @@ on terminal just type
 hewhew generate // generate boilerplate
 
 hewhew add // add your own boilerplate
+
+hewhew delete // delete boilerplate
 ```
 
 ## Available Boilerplates
