@@ -36,7 +36,6 @@ function createDirectoryContentsAdd(CURR_DIR, boilerplatePath) {
 
   filesToCreate.forEach(file => {
     const origFilePath = `${CURR_DIR}/${file}`;
-
     const stats = fs.statSync(origFilePath);
 
     if (stats.isFile()) {

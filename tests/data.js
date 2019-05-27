@@ -17,7 +17,7 @@ const objData = {
   }
 };
 
-const result = toJson({
+const expected = toJson({
   id: 2,
   name: 'kiba',
   mood: 'happy',
@@ -25,8 +25,6 @@ const result = toJson({
   phone: null,
   hobby: 0
 });
-
-const expected = result;
 
 const defaultDataTest = [
   // [value test, behavior, expected]
