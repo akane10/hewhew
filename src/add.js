@@ -5,13 +5,30 @@ const { joinPath } = require('./helpers');
 const CURR_DIR = process.cwd();
 
 async function add(questions) {
-  const answers = await inquirer.prompt(questions);
-  const boilerplateName = answers['project-name'];
+  try {
+    const answers = await inquirer.prompt(questions);
+    const boilerplateName = answers['project-name'];
 
-  const boilerplatePath = joinPath(`../boilerplates/${boilerplateName}`);
-  fs.mkdirSync(boilerplatePath);
+    const boilerplatePath = joinPath(`../boilerplates/${boilerplateName}`);
+    fs.mkdirSync(boilerplatePath);
 
-  createDirectoryContentsAdd(CURR_DIR, boilerplatePath);
+    createDirectoryContentsAdd(CURR_DIR, boilerplatePath);
+  } catch (e) {
+    const errCode = e.code;
+
+    const q = questions
+      .filter(i => i.name === 'project-name')
+      .map(i => {
+        i.message = `folder already exist, try with another project name`;
+        return i;
+      });
+
+    if (errCode === 'EEXIST') {
+      return add(q);
+    }
+    console.log(e);
+    process.exit(1);
+  }
 }
 
 function createDirectoryContentsAdd(CURR_DIR, boilerplatePath) {

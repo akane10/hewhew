@@ -26,12 +26,15 @@ const QUESTIONS = [
 (function() {
   const ARGS = process.argv;
 
-  if (ARGS[2] === 'generate') {
-    return generate(QUESTIONS);
-  } else if (ARGS[2] === 'add') {
+  if (ARGS[2] === 'generate') return generate(QUESTIONS);
+
+  if (ARGS[2] === 'add') {
     // const name = ARGS[3];
     // console.log(name);
     const q = QUESTIONS.filter(i => i.name === 'project-name');
     return add(q);
   }
+
+  console.log('no command found');
+  process.exit(1);
 })();

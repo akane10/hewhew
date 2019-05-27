@@ -34,7 +34,7 @@ async function generate(questions, chosenProject) {
       });
 
     if (errCode === 'EEXIST') {
-      return doIt(q, projectChoice);
+      return generate(q, projectChoice);
     }
     console.log(e);
     process.exit(1);
