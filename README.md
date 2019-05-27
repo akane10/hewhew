@@ -13,7 +13,9 @@ npm i -g hewhew
 on terminal just type
 
 ```
-hewhew
+hewhew generate // generate boilerplate
+
+hewhew add // add your own boilerplate
 ```
 
 ## Available Boilerplates
