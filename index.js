@@ -25,15 +25,11 @@ const QUESTIONS = [
 
 (function() {
   const ARGS = process.argv;
+  const arg = ARGS[2];
 
-  if (ARGS[2] === 'generate') return generate(QUESTIONS);
+  if (arg === 'generate') return generate(QUESTIONS);
 
-  if (ARGS[2] === 'add') {
-    // const name = ARGS[3];
-    // console.log(name);
-    const q = QUESTIONS.filter(i => i.name === 'project-name');
-    return add(q);
-  }
+  if (arg === 'add') return add(QUESTIONS);
 
   console.log('no command found');
   process.exit(1);

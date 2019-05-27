@@ -4,9 +4,12 @@ const { joinPath } = require('./helpers');
 
 const CURR_DIR = process.cwd();
 
+const projectName = x => x.name === 'project-name';
+
 async function add(questions) {
   try {
-    const answers = await inquirer.prompt(questions);
+    const q = questions.filter(projectName);
+    const answers = await inquirer.prompt(q);
     const boilerplateName = answers['project-name'];
 
     const boilerplatePath = joinPath(`../boilerplates/${boilerplateName}`);
@@ -16,12 +19,10 @@ async function add(questions) {
   } catch (e) {
     const errCode = e.code;
 
-    const q = questions
-      .filter(i => i.name === 'project-name')
-      .map(i => {
-        i.message = `folder already exist, try with another project name`;
-        return i;
-      });
+    const q = questions.filter(projectName).map(i => {
+      i.message = `folder already exist, try with another project name`;
+      return i;
+    });
 
     if (errCode === 'EEXIST') {
       return add(q);
