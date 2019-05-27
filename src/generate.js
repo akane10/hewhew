@@ -57,6 +57,8 @@ function createDirectoryContents(boilerplatePath, newProjectPath) {
       const writePath = `${CURR_DIR}/${newProjectPath}/${file}`;
       fs.writeFileSync(writePath, contents, 'utf8');
     } else if (stats.isDirectory()) {
+      if (file === 'node_modules') return;
+
       fs.mkdirSync(`${CURR_DIR}/${newProjectPath}/${file}`);
 
       createDirectoryContents(

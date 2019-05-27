@@ -46,6 +46,8 @@ function createDirectoryContentsAdd(CURR_DIR, boilerplatePath) {
       const writePath = `${boilerplatePath}/${file}`;
       fs.writeFileSync(writePath, contents, 'utf8');
     } else if (stats.isDirectory()) {
+      if (file === 'node_modules') return;
+
       fs.mkdirSync(`${boilerplatePath}/${file}`);
 
       createDirectoryContentsAdd(
