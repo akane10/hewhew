@@ -2,13 +2,14 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 const { joinPath, filterQuestions, changeQuestions } = require('./helpers');
 
+const projectChoice1 = filterQuestions('name', 'project-choice');
+const message = changeQuestions(
+  'message',
+  'What project boilerplate would you like to delete?'
+);
+
 async function deleteBoilerplate(questions) {
   try {
-    const projectChoice1 = filterQuestions('name', 'project-choice');
-    const message = changeQuestions(
-      'message',
-      'What project boilerplate would you like to delete?'
-    );
     const q = questions.filter(projectChoice1).map(message);
     const answers = await inquirer.prompt(q);
     const projectChoice = answers['project-choice'];
@@ -21,7 +22,7 @@ async function deleteBoilerplate(questions) {
         console.log('Boilerplate has been deleted');
       });
     } else {
-      console.log('no folder found');
+      console.log('cannot find the boilerplate');
       process.exit(1);
     }
   } catch (e) {

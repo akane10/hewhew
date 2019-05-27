@@ -32,14 +32,13 @@ async function generate(questions, chosenProject) {
   } catch (e) {
     const errCode = e.code;
 
-    const projectName = filterQuestions('name', 'project-name');
-    const message = changeQuestions(
-      'message',
-      'folder already exist, try with another project name'
-    );
-    const q = questions.filter(projectName).map(message);
-
     if (errCode === 'EEXIST') {
+      const projectName = filterQuestions('name', 'project-name');
+      const message = changeQuestions(
+        'message',
+        'folder already exist, try with another project name'
+      );
+      const q = questions.filter(projectName).map(message);
       return generate(q, projectChoice);
     }
     console.log(e);
@@ -54,7 +53,6 @@ function createDirectoryContents(boilerplatePath, newProjectPath) {
     if (file === 'README.md') return;
 
     const origFilePath = `${boilerplatePath}/${file}`;
-
     const stats = fs.statSync(origFilePath);
 
     if (stats.isFile()) {
