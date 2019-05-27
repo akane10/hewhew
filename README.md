@@ -1,6 +1,6 @@
 # Hewhew
 
-hewhew is boilerplate nodejs project generator. Current version is beta. Next version is still being developed on dev branch, that you can add and delete your own boilerplates on your local machine.
+hewhew is boilerplate nodejs project generator. Current version is beta.
 
 ## Installation
 
@@ -13,7 +13,17 @@ npm i -g hewhew
 on terminal just type
 
 ```
+// version 1.0.0-beta.0
 hewhew
+```
+
+```
+// version 1.0.0-beta.1
+hewhew generate // generate boilerplate
+
+hewhew add // add your own boilerplate
+
+hewhew delete // delete boilerplate
 ```
 
 ## Available Boilerplates
