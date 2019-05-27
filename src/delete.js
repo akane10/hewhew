@@ -1,15 +1,15 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-const { joinPath } = require('./helpers');
-
-const projectChoice1 = x => x.name === 'project-choice';
+const { joinPath, filterQuestions, changeQuestions } = require('./helpers');
 
 async function deleteBoilerplate(questions) {
   try {
-    const q = questions.filter(projectChoice1).map(i => {
-      i.message = `What project boilerplate would you like to delete?`;
-      return i;
-    });
+    const projectChoice1 = filterQuestions('name', 'project-choice');
+    const message = changeQuestions(
+      'message',
+      'What project boilerplate would you like to delete?'
+    );
+    const q = questions.filter(projectChoice1).map(message);
     const answers = await inquirer.prompt(q);
     const projectChoice = answers['project-choice'];
 

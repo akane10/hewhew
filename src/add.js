@@ -1,10 +1,9 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-const { joinPath } = require('./helpers');
+const { joinPath, filterQuestions, changeQuestions } = require('./helpers');
 
 const CURR_DIR = process.cwd();
-
-const projectName = x => x.name === 'project-name';
+const projectName = filterQuestions('name', 'project-name');
 
 async function add(questions) {
   try {
@@ -19,10 +18,12 @@ async function add(questions) {
   } catch (e) {
     const errCode = e.code;
 
-    const q = questions.filter(projectName).map(i => {
-      i.message = `folder already exist, try with another project name`;
-      return i;
-    });
+    const message = changeQuestions(
+      'message',
+      'folder already exist, try with another project name'
+    );
+
+    const q = questions.filter(projectName).map(message);
 
     if (errCode === 'EEXIST') {
       return add(q);

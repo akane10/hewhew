@@ -5,6 +5,13 @@ const toJson = data => JSON.stringify(data, null, 2);
 
 const joinPath = pathArg => path.join(`${__dirname}`, `${pathArg}`);
 
+const filterQuestions = (key, val) => i => i[key] === val;
+
+const changeQuestions = (key, val) => i => {
+  i[key] = val;
+  return i;
+};
+
 const editJson = newData => data => {
   const dataObj = JSON.parse(data);
   const dataMerged = Object.entries({ ...dataObj, ...newData });
@@ -29,5 +36,7 @@ module.exports = {
   editFile,
   editJson,
   toJson,
-  joinPath
+  joinPath,
+  filterQuestions,
+  changeQuestions
 };
