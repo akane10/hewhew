@@ -6,7 +6,10 @@ const projectChoice1 = x => x.name === 'project-choice';
 
 async function deleteBoilerplate(questions) {
   try {
-    const q = questions.filter(projectChoice1);
+    const q = questions.filter(projectChoice1).map(i => {
+      i.message = `What project boilerplate would you like to delete?`;
+      return i;
+    });
     const answers = await inquirer.prompt(q);
     const projectChoice = answers['project-choice'];
 
