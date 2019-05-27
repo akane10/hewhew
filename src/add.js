@@ -4,12 +4,12 @@ const { joinPath } = require('./helpers');
 
 const CURR_DIR = process.cwd();
 
-function add(name) {
-  const boilerplateName = name;
+async function add(questions) {
+  const answers = await inquirer.prompt(questions);
+  const boilerplateName = answers['project-name'];
+
   const boilerplatePath = joinPath(`../boilerplates/${boilerplateName}`);
   fs.mkdirSync(boilerplatePath);
-
-  // const testPath = `${CURR_DIR}/boilerplates/express-mongodb`;
 
   createDirectoryContentsAdd(CURR_DIR, boilerplatePath);
 }
