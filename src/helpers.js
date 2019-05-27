@@ -1,6 +1,9 @@
 const fs = require('fs');
+const path = require('path');
 
 const toJson = data => JSON.stringify(data, null, 2);
+
+const joinPath = pathArg => path.join(`${__dirname}`, `${pathArg}`);
 
 const editJson = newData => data => {
   const dataObj = JSON.parse(data);
@@ -25,5 +28,6 @@ function editFile(path, fn) {
 module.exports = {
   editFile,
   editJson,
-  toJson
+  toJson,
+  joinPath
 };
