@@ -4,7 +4,7 @@
   "description": "boilerplate nodejs project generator",
   "main": "index.js",
   "scripts": {
-    "test": "jest --collectCoverage --testPathIgnorePatterns boilerplates/"
+    "test": "jest --testPathIgnorePatterns boilerplates/"
   },
   "bin": {
     "hewhew": "./index.js"

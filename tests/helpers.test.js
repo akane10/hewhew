@@ -1,6 +1,5 @@
-const { editJson } = require('../helpers');
+const { editJson, changeQuestions } = require('../src/helpers');
 const { defaultDataTest } = require('./data');
-const fs = require('fs');
 
 describe.each(defaultDataTest)(
   'test editJson',
@@ -8,26 +7,37 @@ describe.each(defaultDataTest)(
     test(`${behavior}`, () => {
       expect(editJson(valueTest.newOne)(valueTest.oldOne)).toBe(expected);
     });
-    test(`should be pure`, () => {
-      expect(valueTest).toBe(valueTest);
-    });
   }
 );
 
-const path = 'tests/sample/package.json';
-const data = fs.readFileSync(path, 'utf-8');
-const editFileData = [
-  // [value test, behavior, expected]
-  [path, 'should success', data]
-];
+describe('test changeQuestions', () => {
+  const QUESTIONS = [
+    {
+      name: 'project-choice',
+      type: 'list',
+      message: 'What project boilerplate would you like to generate?'
+    }
+  ];
 
-describe.skip.each(editFileData)(
-  'test editFile',
-  (valueTest, behavior, expected) => {
-    test(`${behavior}`, () => {
-      expect(editFile(valueTest, editJson({ name: 'projectName' }))).toBe(
-        expected
-      );
-    });
-  }
-);
+  const message = changeQuestions(
+    'message',
+    'What project boilerplate would you like to delete?'
+  );
+
+  const fn = QUESTIONS.map(message);
+  test('success', () => {
+    expect(fn).toStrictEqual([
+      {
+        name: 'project-choice',
+        type: 'list',
+        message: 'What project boilerplate would you like to delete?'
+      }
+    ]);
+  });
+
+  test(`should be pure`, () => {
+    expect(QUESTIONS[0].message).toBe(
+      'What project boilerplate would you like to generate?'
+    );
+  });
+});

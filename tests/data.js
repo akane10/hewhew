@@ -1,4 +1,4 @@
-const { toJson } = require('../helpers');
+const { toJson } = require('../src/helpers');
 
 // editJson data
 const objData = {

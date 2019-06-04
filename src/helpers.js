@@ -8,8 +8,7 @@ const joinPath = pathArg => path.join(`${__dirname}`, `${pathArg}`);
 const filterQuestions = (key, val) => i => i[key] === val;
 
 const changeQuestions = (key, val) => i => {
-  i[key] = val;
-  return i;
+  return { ...i, [key]: val };
 };
 
 const editJson = newData => data => {
