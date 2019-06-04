@@ -31,11 +31,35 @@ function editFile(path, fn) {
   fs.writeFileSync(path, newData, 'utf-8');
 }
 
+function createDirectory(fromPath, toPath) {
+  const filesToCreate = fs.readdirSync(fromPath);
+
+  filesToCreate.forEach(file => {
+    // if (file === 'README.md') return;
+
+    const origFilePath = `${fromPath}/${file}`;
+    const stats = fs.statSync(origFilePath);
+
+    if (stats.isFile()) {
+      const contents = fs.readFileSync(origFilePath, 'utf8');
+      const writePath = `${toPath}/${file}`;
+
+      fs.writeFileSync(writePath, contents, 'utf8');
+    } else if (stats.isDirectory()) {
+      if (file === 'node_modules') return;
+
+      fs.mkdirSync(`${toPath}/${file}`);
+      createDirectory(`${fromPath}/${file}`, `${toPath}/${file}`);
+    }
+  });
+}
+
 module.exports = {
   editFile,
   editJson,
   toJson,
   joinPath,
   filterQuestions,
-  changeQuestions
+  changeQuestions,
+  createDirectory
 };

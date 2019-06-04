@@ -5,7 +5,8 @@ const {
   editJson,
   joinPath,
   filterQuestions,
-  changeQuestions
+  changeQuestions,
+  createDirectory
 } = require('./helpers');
 
 const CURR_DIR = process.cwd();
@@ -18,16 +19,15 @@ async function generate(questions, chosenProject) {
     const projectName = answers['project-name'];
 
     const boilerplatePath = joinPath(`../boilerplates/${projectChoice}`);
+    const projectPath = `${CURR_DIR}/${projectName}`;
+    fs.mkdirSync(projectPath);
+    createDirectory(boilerplatePath, projectPath);
 
-    const currentProjectPath = `${CURR_DIR}/${projectName}`;
-    fs.mkdirSync(currentProjectPath);
-    createDirectoryContents(boilerplatePath, projectName);
-
-    const jsonFilePath = `${currentProjectPath}/package.json`;
+    const jsonFilePath = `${projectPath}/package.json`;
     const stats = fs.existsSync(jsonFilePath);
     if (stats) {
       const editName = editJson({ name: projectName });
-      editFile(`${currentProjectPath}/package.json`, editName);
+      editFile(`${projectPath}/package.json`, editName);
     }
   } catch (e) {
     const errCode = e.code;
@@ -44,33 +44,6 @@ async function generate(questions, chosenProject) {
     console.log(e);
     process.exit(1);
   }
-}
-
-function createDirectoryContents(boilerplatePath, newProjectPath) {
-  const filesToCreate = fs.readdirSync(boilerplatePath);
-
-  filesToCreate.forEach(file => {
-    if (file === 'README.md') return;
-
-    const origFilePath = `${boilerplatePath}/${file}`;
-    const stats = fs.statSync(origFilePath);
-
-    if (stats.isFile()) {
-      const contents = fs.readFileSync(origFilePath, 'utf8');
-
-      const writePath = `${CURR_DIR}/${newProjectPath}/${file}`;
-      fs.writeFileSync(writePath, contents, 'utf8');
-    } else if (stats.isDirectory()) {
-      if (file === 'node_modules') return;
-
-      fs.mkdirSync(`${CURR_DIR}/${newProjectPath}/${file}`);
-
-      createDirectoryContents(
-        `${boilerplatePath}/${file}`,
-        `${newProjectPath}/${file}`
-      );
-    }
-  });
 }
 
 module.exports = generate;
