@@ -27,7 +27,7 @@ async function generate(questions, chosenProject) {
     const stats = fs.existsSync(jsonFilePath);
     if (stats) {
       const editName = editJson({ name: projectName });
-      editFile(`${projectPath}/package.json`, editName);
+      editFile(jsonFilePath, editName);
     }
   } catch (e) {
     const errCode = e.code;
