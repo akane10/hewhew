@@ -14,6 +14,12 @@ async function deleteBoilerplate(questions) {
     const answers = await inquirer.prompt(q);
     const projectChoice = answers['project-choice'];
 
+    if (
+      projectChoice === 'express-postgresql' ||
+      projectChoice === 'express-mongodb'
+    )
+      return console.log('cannot delete default boilerplate');
+
     const boilerplatePath = joinPath(`../boilerplates/${projectChoice}`);
 
     if (fs.existsSync(boilerplatePath)) {
