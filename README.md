@@ -13,12 +13,6 @@ npm i -g hewhew
 on terminal just type
 
 ```
-// version 1.0.0-beta.0
-hewhew
-```
-
-```
-// version 1.0.0-beta.1
 hewhew generate // generate boilerplate
 
 hewhew add // add your own boilerplate
