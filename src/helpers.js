@@ -7,15 +7,13 @@ const joinPath = pathArg => path.join(`${__dirname}`, `${pathArg}`);
 
 const filterQuestions = (key, val) => i => i[key] === val;
 
-const changeQuestions = (key, val) => i => {
-  return { ...i, [key]: val };
-};
+const changeQuestions = (key, val) => i => ({ ...i, [key]: val });
 
 const editJson = newData => data => {
   const dataObj = JSON.parse(data);
   const dataMerged = Object.entries({ ...dataObj, ...newData });
 
-  const notUndefined = ([key, val]) => val !== undefined;
+  const notUndefined = ([, val]) => val !== undefined;
   const toObj = (obj, item) => {
     obj[item[0]] = item[1];
     return obj;
