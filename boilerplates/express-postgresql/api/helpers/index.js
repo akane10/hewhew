@@ -1,3 +1,4 @@
+// sequelize thing
 function removePassword(arg) {
   const v = arg;
   // eslint-disable-next-line func-names
@@ -9,21 +10,29 @@ function removePassword(arg) {
   };
 }
 
+// validateEmail :: String -> Bool
 function validateEmail(email) {
   // eslint-disable-next-line
-  const regEx = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
-  return regEx.test(email)
+  const regEx = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  return regEx.test(email);
 }
 
-function parseData(obj) {
-  const data = {};
-  Object.entries(obj).forEach(([key, value]) => {
-    if (value) {
-      data[key] = value;
-    }
-  });
+// removeFalsy :: Obj -> Obj
+function removeFalsy(obj) {
+  const truthyValue = ([, val]) => val;
+
+  const data = Object.entries(obj)
+    .filter(truthyValue)
+    .reduce(toObj, {});
+
   return data;
 }
+
+const parseUsername = username =>
+  username
+    .toLowerCase()
+    .replace(/[^a-zA-Z0-9]/g, '')
+    .trim();
 
 function errHandler(msg, status) {
   const err = new Error(msg);
@@ -37,17 +46,22 @@ const sendData = {
       success: true,
       results: arg
     };
-    const all = { ...data, ...custom };
-    return all;
+    return { ...data, ...custom };
   },
   fail(arg, custom) {
     const data = {
       success: false,
       results: arg
     };
-    const all = { ...data, ...custom };
-    return all;
+    return { ...data, ...custom };
   }
 };
 
-module.exports = { removePassword, validateEmail, parseData, errHandler, sendData };
+module.exports = {
+  removePassword,
+  validateEmail,
+  removeFalsy,
+  errHandler,
+  sendData,
+  parseUsername
+};

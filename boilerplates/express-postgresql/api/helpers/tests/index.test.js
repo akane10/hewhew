@@ -1,14 +1,14 @@
 /* eslint-disable */
-const { parseData, validateEmail } = require('../index');
+const { removeFalsy, validateEmail, parseUsername } = require('../index');
 
-describe('test parseData', () => {
+describe('test removeFalsy', () => {
   const data = {
     id: 1,
     username: 'name',
     age: null
   };
   test('remove falsy values', () => {
-    expect(parseData(data)).toEqual({ id: 1, username: 'name' });
+    expect(removeFalsy(data)).toEqual({ id: 1, username: 'name' });
   });
 });
 
@@ -22,4 +22,9 @@ describe('test validateEmail', () => {
   test('return false', () => {
     expect(validateEmail(notEmail)).toBe(false);
   });
+});
+
+test('test parseUsername', () => {
+  const username = 'kibaAA*^&%%#';
+  expect(parseUsername(username)).toBe('kibaaa');
 });
