@@ -43,7 +43,9 @@ function createDirectory(fromPath, toPath) {
       const writePath = `${toPath}/${file}`;
 
       fs.writeFileSync(writePath, contents, 'utf8');
-    } else if (stats.isDirectory()) {
+    }
+
+    if (stats.isDirectory()) {
       if (file === 'node_modules') return;
 
       fs.mkdirSync(`${toPath}/${file}`);
