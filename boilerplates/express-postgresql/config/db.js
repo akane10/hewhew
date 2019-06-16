@@ -4,7 +4,6 @@ const { dbname, dbuser, dbpassword } = require('./config');
 const db = new Sequelize(dbname, dbuser, dbpassword, {
   host: 'localhost',
   dialect: 'postgres',
-  operatorsAliases: false,
   omitNull: true,
   logging: false,
 
