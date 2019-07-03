@@ -30,7 +30,7 @@ async function generate(questions, chosenProject) {
       editFile(jsonFilePath, editName);
     }
   } catch (e) {
-    const errCode = e.code;
+    const { code: errCode } = e;
 
     if (errCode === 'EEXIST') {
       const projectName = filterQuestions('name', 'project-name');

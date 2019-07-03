@@ -1,5 +1,6 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
+const rimraf = require('rimraf');
 const { joinPath, filterQuestions, changeQuestions } = require('./helpers');
 
 const projectChoice1 = filterQuestions('name', 'project-choice');
@@ -23,7 +24,6 @@ async function deleteBoilerplate(questions) {
     const boilerplatePath = joinPath(`../boilerplates/${projectChoice}`);
 
     if (fs.existsSync(boilerplatePath)) {
-      const rimraf = require('rimraf');
       rimraf(boilerplatePath, function() {
         console.log('Boilerplate has been deleted');
       });

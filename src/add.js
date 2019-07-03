@@ -21,7 +21,7 @@ async function add(questions) {
 
     createDirectory(CURR_DIR, boilerplatePath);
   } catch (e) {
-    const errCode = e.code;
+    const {code: errCode} = e;
 
     if (errCode === 'EEXIST') {
       const message = changeQuestions(
