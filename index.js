@@ -34,6 +34,7 @@ const QUESTIONS = [
 
   if (arg === 'delete') return deleteBoilerplate(QUESTIONS);
 
-  console.log('no command found');
+  console.log('oopss unknown command!!');
+  console.log('available commands are: "generate", "add", "delete"');
   process.exit(1);
 })();
