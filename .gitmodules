@@ -1,6 +1,3 @@
-[submodule "boilerplates"]
-	path = boilerplates
-	url = git@github.com:akane10/express-mongodb.git
 [submodule "boilerplates/express-mongodb"]
 	path = boilerplates/express-mongodb
 	url = git@github.com:akane10/express-mongodb.git
