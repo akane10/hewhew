@@ -25,14 +25,13 @@ const QUESTIONS = [
 ];
 
 (function() {
-  const ARGS = process.argv;
-  const arg = ARGS[2];
+  const [_, __, command] = process.argv;
 
-  if (arg === 'generate') return generate(QUESTIONS);
+  if (command === 'generate') return generate(QUESTIONS);
 
-  if (arg === 'add') return add(QUESTIONS);
+  if (command === 'add') return add(QUESTIONS);
 
-  if (arg === 'delete') return deleteBoilerplate(QUESTIONS);
+  if (command === 'delete') return deleteBoilerplate(QUESTIONS);
 
   console.log('oopss unknown command!!');
   console.log('available commands are: "generate", "add", "delete"');
