@@ -22,5 +22,5 @@ hewhew delete // delete boilerplate
 
 ## Available Boilerplates
 
-- [express-postgresql](https://github.com/akane10/hewhew/tree/master/boilerplates/express-postgresql)
-- [express-mongodb](https://github.com/akane10/hewhew/tree/master/boilerplates/express-mongodb)
+- [express-postgresql](https://github.com/akane10/express-postgresql)
+- [express-mongodb](https://github.com/akane10/express-mongodb)
