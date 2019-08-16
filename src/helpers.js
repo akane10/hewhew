@@ -15,8 +15,7 @@ const editJson = newData => data => {
 
   const notUndefined = ([, val]) => val !== undefined;
   const toObj = (obj, item) => {
-    const key = item[0];
-    const val = item[1];
+    const [key, val] = item;
     obj[key] = val;
     return obj;
   };
