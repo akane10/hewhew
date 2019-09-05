@@ -1,6 +1,6 @@
 # Hewhew
 
-hewhew is boilerplate nodejs project generator. Current version is beta.
+hewhew is boilerplate nodejs project generator. If you want to use these boilerplates make sure you read the documentation though ([express-postgresql](https://github.com/akane10/express-postgresql), [express-mongodb](https://github.com/akane10/express-mongodb))
 
 ## Installation
 
