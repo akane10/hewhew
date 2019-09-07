@@ -1,6 +1,6 @@
 {
   "name": "hewhew",
-  "version": "1.0.0-beta.10",
+  "version": "1.0.0-beta.11",
   "description": "boilerplate nodejs project generator",
   "main": "index.js",
   "scripts": {
