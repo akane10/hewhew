@@ -34,7 +34,7 @@ function createDirectory(fromPath, toPath) {
   const filesToCreate = fs.readdirSync(fromPath);
 
   filesToCreate.forEach(file => {
-    // if (file === 'README.md') return;
+    if (file === '.git') return;
 
     const origFilePath = `${fromPath}/${file}`;
     const stats = fs.statSync(origFilePath);
