@@ -1,9 +1,8 @@
 const fs = require("fs");
+const path = require("path");
 
 const toJson = data => JSON.stringify(data, null, 2);
-
 const filterQuestions = (key, val) => i => i[key] === val;
-
 const changeQuestions = (key, val) => i => ({ ...i, [key]: val });
 
 const editJson = newData => data => {
@@ -33,12 +32,12 @@ function createDirectory(fromPath, toPath) {
   filesToCreate.forEach(file => {
     if (file === ".git") return;
 
-    const origFilePath = `${fromPath}/${file}`;
+    const origFilePath = path.join(fromPath, file);
     const stats = fs.statSync(origFilePath);
+    const writePath = path.join(toPath, file);
 
     if (stats.isFile()) {
       const contents = fs.readFileSync(origFilePath, "utf8");
-      const writePath = `${toPath}/${file}`;
 
       fs.writeFileSync(writePath, contents, "utf8");
     }
@@ -46,8 +45,8 @@ function createDirectory(fromPath, toPath) {
     if (stats.isDirectory()) {
       if (file === "node_modules") return;
 
-      fs.mkdirSync(`${toPath}/${file}`);
-      createDirectory(`${fromPath}/${file}`, `${toPath}/${file}`);
+      fs.mkdirSync(writePath);
+      createDirectory(origFilePath, writePath);
     }
   });
 }
