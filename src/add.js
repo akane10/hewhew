@@ -1,32 +1,37 @@
-const inquirer = require('inquirer');
-const fs = require('fs');
+const inquirer = require("inquirer");
+const fs = require("fs");
+const path = require("path");
 const {
-  joinPath,
   filterQuestions,
   changeQuestions,
   createDirectory
-} = require('./helpers');
+} = require("./helpers");
 
 const CURR_DIR = process.cwd();
-const projectName = filterQuestions('name', 'project-name');
+const projectName = filterQuestions("name", "project-name");
 
 async function add(questions) {
   try {
     const q = questions.filter(projectName);
     const answers = await inquirer.prompt(q);
-    const boilerplateName = answers['project-name'];
+    const boilerplateName = answers["project-name"];
 
-    const boilerplatePath = joinPath(`../boilerplates/${boilerplateName}`);
+    const boilerplatePath = path.join(
+      __dirname,
+      "..",
+      "boilerplates",
+      `${boilerplateName}`
+    );
     fs.mkdirSync(boilerplatePath);
 
     createDirectory(CURR_DIR, boilerplatePath);
   } catch (e) {
-    const {code: errCode} = e;
+    const { code: errCode } = e;
 
-    if (errCode === 'EEXIST') {
+    if (errCode === "EEXIST") {
       const message = changeQuestions(
-        'message',
-        'folder already exist, try with another project name'
+        "message",
+        "folder already exist, try with another project name"
       );
       const q = questions.filter(projectName).map(message);
       return add(q);

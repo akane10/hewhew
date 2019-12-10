@@ -1,25 +1,27 @@
 #!/usr/bin/env node
 
-const fs = require('fs');
-const generate = require('./src/generate');
-const add = require('./src/add');
-const deleteBoilerplate = require('./src/delete');
+const fs = require("fs");
+const generate = require("./src/generate");
+const add = require("./src/add");
+const deleteBoilerplate = require("./src/delete");
+const path = require("path");
 
-const CHOICES = fs.readdirSync(`${__dirname}/boilerplates`);
+const boilerplatePath = path.join(__dirname, "boilerplates");
+const CHOICES = fs.readdirSync(boilerplatePath);
 const QUESTIONS = [
   {
-    name: 'project-choice',
-    type: 'list',
-    message: 'What project boilerplate would you like to generate?',
+    name: "project-choice",
+    type: "list",
+    message: "What project boilerplate would you like to generate?",
     choices: CHOICES
   },
   {
-    name: 'project-name',
-    type: 'input',
-    message: 'Project name:',
+    name: "project-name",
+    type: "input",
+    message: "Project name:",
     validate: function(input) {
       if (/^([A-Za-z\-\_\d])+$/.test(input)) return true;
-      return 'Project name may only include letters, numbers, underscores and hashes.';
+      return "Project name may only include letters, numbers, underscores and hashes.";
     }
   }
 ];
@@ -27,13 +29,13 @@ const QUESTIONS = [
 (function() {
   const [_, __, command] = process.argv;
 
-  if (command === 'generate') return generate(QUESTIONS);
+  if (command === "generate") return generate(QUESTIONS);
 
-  if (command === 'add') return add(QUESTIONS);
+  if (command === "add") return add(QUESTIONS);
 
-  if (command === 'delete') return deleteBoilerplate(QUESTIONS);
+  if (command === "delete") return deleteBoilerplate(QUESTIONS);
 
-  console.log('oopss unknown command!!');
+  console.log("oopss unknown command!!");
   console.log('available commands are: "generate", "add", "delete"');
   process.exit(1);
 })();
