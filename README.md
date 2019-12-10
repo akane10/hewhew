@@ -24,7 +24,3 @@ hewhew delete // delete boilerplate
 
 - [express-postgresql](https://github.com/akane10/express-postgresql)
 - [express-mongodb](https://github.com/akane10/express-mongodb)
-
-#### Note
-
-this (Hewhew) probably won't work on windows
